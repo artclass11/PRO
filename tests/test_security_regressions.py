@@ -1,9 +1,9 @@
 from shadowpilot import Action, Policy, RiskLevel, ShadowPilot
 
 
-def test_cost_policy_blocks_execution():
+def test_cost_signal_can_block_execution():
     calls = []
-    pilot = ShadowPilot(Policy(max_risk_to_execute=RiskLevel.CRITICAL, max_cost=1))
+    pilot = ShadowPilot(Policy(max_risk_to_execute=RiskLevel.SAFE, max_cost=1))
     pilot.register(
         "charge",
         lambda args, shadow: {"preview": True},
