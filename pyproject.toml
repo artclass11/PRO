@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "shadowpilot"
-version = "0.2.0"
-description = "Policy-first pre-execution control for AI agent actions, with shadow previews and tamper-evident receipts."
+version = "0.1.1"
+description = "Simulate AI agent actions before execution: impact, risk, reversibility, and tamper-evident receipts."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
