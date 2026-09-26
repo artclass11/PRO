@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pulsecheck"
+version = "0.1.0"
+description = "Dependency-free HTTP and TLS health checker."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "ARTCLASS"}]
+
+[project.scripts]
+pulsecheck = "pulsecheck.__main__:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
