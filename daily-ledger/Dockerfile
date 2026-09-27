@@ -13,9 +13,9 @@ RUN curl -fsSL https://services.gradle.org/distributions/gradle-8.9-bin.zip -o /
 
 ENV PATH="/opt/gradle-8.9/bin:${PATH}"
 
-COPY . /workspace
+COPY daily-ledger /workspace/daily-ledger
 
-RUN cd /workspace \
+RUN cd /workspace/daily-ledger \
     && gradle --no-daemon :app:lintDebug :app:assembleDebug \
     && mkdir -p /site \
     && cp app/build/outputs/apk/debug/app-debug.apk /site/DailyLedger-v1.0.0.apk \
