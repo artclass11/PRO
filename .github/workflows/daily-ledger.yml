@@ -1,0 +1,51 @@
+name: Daily Ledger Android APK
+
+on:
+  push:
+    paths:
+      - "daily-ledger/**"
+      - ".github/workflows/daily-ledger.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: daily-ledger
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Build and lint
+        run: gradle --no-daemon test lintDebug assembleDebug
+
+      - name: Package APK
+        run: |
+          mkdir -p output
+          cp app/build/outputs/apk/debug/app-debug.apk output/DailyLedger-v1.0.0-debug.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DailyLedger-v1.0.0
+          path: daily-ledger/output/DailyLedger-v1.0.0-debug.apk
+          if-no-files-found: error
