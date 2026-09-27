@@ -215,8 +215,7 @@ public class MainActivity extends android.app.Activity {
         List<Entry> today = entriesFor(currentDate);
         int serial = 1;
         if (today.isEmpty()) {
-            TextView empty = text("आजची नोंद अजून नाही.
-+ नवीन नोंद दाबा.", 15, MUTED, false);
+            TextView empty = text("आजची नोंद अजून नाही.\n+ नवीन नोंद दाबा.", 15, MUTED, false);
             empty.setGravity(Gravity.CENTER);
             empty.setPadding(dp(12), dp(28), dp(12), dp(28));
             list.addView(empty);
