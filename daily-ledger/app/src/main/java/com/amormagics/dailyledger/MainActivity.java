@@ -235,7 +235,7 @@ public class MainActivity extends android.app.Activity {
 
         EditText customer = field("ग्राहकाचे नाव", InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
         customer.setText(e.customer);
-        top.addView(customer, lp(0, dp(46), dp(10), 0, 0, 0, 1));
+        top.addView(customer, new LinearLayout.LayoutParams(0, dp(46), 1)); customer.setPadding(dp(10), 0, 0, 0);
 
         Button del = button("×", false);
         del.setTextSize(22);
@@ -283,7 +283,7 @@ public class MainActivity extends android.app.Activity {
         body.addView(sub, lp(-1, -2, 0, 0, 0, dp(10)));
 
         List<Entry> copy = new ArrayList<>(entries);
-        copy.sort(Comparator.comparing((Entry e) -> e.date).reversed().thenComparingLong(e -> e.id).reversed());
+        copy.sort(Comparator.comparing((Entry e) -> e.date).reversed().thenComparing(Comparator.comparingLong((Entry e) -> e.id).reversed()));
 
         String lastDate = "";
         for (Entry e : copy) {
