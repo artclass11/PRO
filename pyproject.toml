@@ -22,7 +22,7 @@ classifiers = [
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0,<9"]
+dev = ["pytest>=8.0,<10"]
 
 [project.scripts]
 shadowpilot = "shadowpilot.cli:main"
